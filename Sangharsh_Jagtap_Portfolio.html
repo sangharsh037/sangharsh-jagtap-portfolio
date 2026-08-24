@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sangharsh Jagtap — Software Test Engineer</title>
+<style>
+:root{
+ --bg:#05070b;--panel:#0b1018;--panel2:#0f1722;--line:#1c2837;
+ --text:#f5f7fa;--muted:#8d9aaa;--accent:#45c7ff;--accent2:#7c6cff;
+ --green:#39d98a;--orange:#ffb454;--red:#ff6675;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:
+ radial-gradient(circle at 80% 0%,rgba(69,199,255,.11),transparent 28%),
+ radial-gradient(circle at 10% 35%,rgba(124,108,255,.08),transparent 25%)}
+a{text-decoration:none;color:inherit}.container{width:min(1160px,92%);margin:auto}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(5,7,11,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:900;letter-spacing:.5px}.logo i{font-style:normal;color:var(--accent)}
+.navlinks{display:flex;gap:24px;color:#8f9baa;font-size:13px}.navlinks a:hover{color:#fff}
+.hero{min-height:100vh;padding-top:68px;display:flex;align-items:center}.heroGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;color:#a8dfff;border:1px solid #20445c;background:#09141e;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1px}
+.dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green)}
+h1{font-size:clamp(48px,7vw,82px);line-height:.93;letter-spacing:-4px;margin:20px 0}
+h1 span{background:linear-gradient(90deg,#fff,var(--accent),#a79dff);-webkit-background-clip:text;color:transparent}
+.heroText{font-size:18px;line-height:1.8;color:var(--muted);max-width:680px}.actions{margin-top:26px}
+.btn{display:inline-flex;padding:13px 18px;border-radius:9px;font-weight:800;font-size:13px;background:#fff;color:#05070b;margin-right:8px}.btn.secondary{background:#0b131d;color:#dce8f2;border:1px solid #223346}
+.visual{position:relative;height:430px;display:grid;place-items:center}
+.core{width:255px;height:255px;border:1px solid #245b79;border-radius:28px;transform:rotateX(55deg) rotateZ(45deg);background:linear-gradient(145deg,#102638,#080e16);box-shadow:-25px 30px 80px rgba(0,0,0,.8),0 0 70px rgba(69,199,255,.08);position:relative}
+.core:before,.core:after{content:"";position:absolute;inset:22px;border:1px solid rgba(69,199,255,.3);border-radius:18px}.core:after{inset:54px;border-color:rgba(124,108,255,.35)}
+.coreText{position:absolute;transform:rotate(-45deg) rotateX(-55deg);font-size:36px;font-weight:900;letter-spacing:3px;top:91px;left:74px;color:#dff6ff}.orbit{position:absolute;width:360px;height:360px;border:1px solid rgba(69,199,255,.18);border-radius:50%;animation:spin 12s linear infinite}.orbit:after{content:"";position:absolute;width:9px;height:9px;background:var(--accent);border-radius:50%;top:10px;left:50%;box-shadow:0 0 20px var(--accent)}@keyframes spin{to{transform:rotate(360deg)}}
+section{padding:100px 0}.eyebrow{font-size:11px;font-weight:900;letter-spacing:2px;color:var(--accent)}h2{font-size:38px;letter-spacing:-1.5px;margin:8px 0 28px}.muted{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.stat{border:1px solid var(--line);background:var(--panel);padding:22px;border-radius:12px}.stat strong{display:block;font-size:28px}.stat small{color:var(--muted)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:linear-gradient(145deg,#0b111a,#080d14);border:1px solid var(--line);border-radius:14px;padding:22px;transition:.25s}.card:hover{transform:translateY(-5px);border-color:#2d536b}.card h3{margin:0 0 8px}.tag{display:inline-block;padding:5px 8px;border:1px solid #203447;background:#0b1621;border-radius:20px;font-size:11px;color:#b7d4e8;margin:3px 2px 0 0}
+.project{min-height:240px;display:flex;flex-direction:column;justify-content:space-between}.project .num{font-size:11px;color:#526a7e;font-weight:900}.project h3{font-size:22px}
+.flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:25px}.node{padding:12px 14px;border:1px solid #24445c;background:#0a141f;border-radius:8px;font-size:12px;font-weight:800}.arrow{color:var(--accent)}
+.lab{background:#070d15;border:1px solid #1d354b;border-radius:16px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.35)}.labTop{height:50px;border-bottom:1px solid #1d354b;background:#0c1621;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:12px}.lights span{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.r{background:#ff605c}.y{background:#ffbd44}.g{background:#28c840}.labBody{display:grid;grid-template-columns:180px 1fr;min-height:420px}.sidebar{border-right:1px solid #1b3043;padding:12px}.sideItem{display:block;width:100%;text-align:left;border:0;font-family:inherit;padding:10px;border-radius:7px;color:#75899b;background:transparent;font-size:12px;margin-bottom:3px;cursor:pointer}.sideItem:hover{background:#0d2232;color:#fff}.sideItem.active{background:#102b3e;color:#fff;border-left:2px solid var(--accent)}.work{padding:22px}.crumb{font-size:10px;color:#5d7487}.form{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0}.field{background:#09111a;border:1px solid #1c3448;border-radius:8px;padding:11px}.field small{display:block;color:#637b8e;font-size:9px;margin-bottom:5px}.field b{font-size:12px}.field input,.field select{width:100%;background:#060d15;color:#e7f3fb;border:1px solid #27445a;border-radius:6px;padding:9px;font:12px inherit;outline:none}.field input:focus,.field select:focus{border-color:#45c7ff;box-shadow:0 0 0 2px rgba(69,199,255,.1)}.status{display:inline-block;padding:4px 7px;border-radius:5px;font-size:9px;font-weight:900}.ok{background:#0b3828;color:#57df9a}.info{background:#0d3047;color:#68d3ff}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}.tab{border:1px solid #223a4f;background:#0a141f;color:#8da3b6;padding:9px 12px;border-radius:7px;cursor:pointer}.tab.active{background:#12364c;border-color:#38bde9;color:#fff}.pane{display:none}.pane.active{display:block}
+table{width:100%;border-collapse:collapse;background:#080f17;border:1px solid #1b3043;border-radius:10px;overflow:hidden}th,td{text-align:left;padding:12px;border-bottom:1px solid #162a3b;font-size:12px}th{color:#d7e8f4}td{color:#8fa6b9}.pass{color:var(--green);font-weight:800}.high{color:var(--orange);font-weight:800}
+.code{background:#03070b;border:1px solid #172b3d;border-radius:9px;padding:16px;font:12px/1.7 Consolas,monospace;color:#b9d7e8;white-space:pre-wrap}
+.timeline{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.stage{background:var(--panel);border:1px solid var(--line);padding:14px 5px;text-align:center;border-radius:8px;font-size:11px;font-weight:800}.stage small{display:block;color:#657a8c;font-weight:400;margin-top:4px}
+footer{border-top:1px solid var(--line);padding:38px 0;color:#687c8e;font-size:12px}
+@media(max-width:1050px){.stats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:850px){.heroGrid{grid-template-columns:1fr}.visual{height:330px}.stats{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.labBody{grid-template-columns:1fr}.sidebar{display:none}.timeline{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}.form{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div class="container nav"><div class="logo">SANGHARSH <i>JAGTAP</i> / QA</div><div class="navlinks"><a href="#about">About</a><a href="#work">Experience</a><a href="#flexcube">Flexcube</a><a href="#lab">QA Lab</a><a href="#contact">Contact</a></div></div></nav>
+
+<header class="hero" id="about"><div class="container heroGrid">
+<div><div class="badge"><span class="dot"></span> SOFTWARE TEST ENGINEER · IMMEDIATE JOINER</div>
+<h1>Software testing,<br><span>built around proof.</span></h1>
+<p class="heroText">Software Test Engineer with 3.6+ years of experience in Manual, Functional, Regression, API, Database and UAT testing across Core Banking, Internet Banking, Investment Banking, Capital Markets, UPI, Digital Payments, Mobile Banking, LOS, LMS and Mutual Funds. Hands-on experience in Oracle FLEXCUBE, Postman, Newman, SQL, JIRA and HP ALM.</p>
+<div class="actions"><a class="btn" href="#flexcube">Explore Core Banking</a><a class="btn secondary" href="#lab">Open QA Lab</a></div></div>
+<div class="visual"><div class="orbit"></div><div class="core"><div class="coreText">QA</div></div></div>
+</div></header>
+
+<section><div class="container"><div class="eyebrow">AT A GLANCE</div><h2>Testing profile</h2><div class="stats">
+<div class="stat"><strong>3.6+</strong><small>Years experience</small></div>
+<div class="stat"><strong>Manual</strong><small>Functional & UAT testing</small></div>
+<div class="stat"><strong>FLEXCUBE</strong><small>Citibank India · Core Banking</small></div>
+<div class="stat"><strong>API</strong><small>Postman / Newman · REST</small></div>
+<div class="stat"><strong>SQL</strong><small>Oracle / SQL Server</small></div>
+</div></div></section>
+
+<section id="work"><div class="container"><div class="eyebrow">EXPERIENCE</div><h2>What I work on</h2><div class="grid3">
+<div class="card"><h3>Testing</h3><p class="muted">Functional, regression, smoke, sanity, integration, system, exploratory, retesting, UAT, database, API and end-to-end testing.</p><span class="tag">STLC</span><span class="tag">RTM</span><span class="tag">Test Design</span></div>
+<div class="card"><h3>API & Database</h3><p class="muted">REST API request/response validation, JSON/XML, authentication, HTTP methods, status codes and SQL-based backend validation.</p><span class="tag">Postman</span><span class="tag">Newman</span><span class="tag">SQL</span><span class="tag">Oracle</span></div>
+<div class="card"><h3>Banking & Core Banking</h3><p class="muted">FLEXCUBE CASA, Current/Savings Account creation and maintenance, customer validation, FD/TD, fund transfers, EOD/BOD, reconciliation, NEFT, RTGS, IMPS, UPI, authentication and account workflows.</p><span class="tag">FLEXCUBE</span><span class="tag">CASA</span><span class="tag">FD / TD</span><span class="tag">EOD / BOD</span><span class="tag">NEFT</span><span class="tag">RTGS</span><span class="tag">IMPS</span></div>
+</div>
+<div class="card" style="margin-top:15px;text-align:center;padding:28px">
+<div class="eyebrow">BUILT & TESTED BY ME</div>
+<h3 style="font-size:22px;margin:8px 0 10px">I built this QA portfolio independently to demonstrate how I approach software testing.</h3>
+<p class="muted" style="max-width:850px;margin:auto;line-height:1.8">I created the workflows, test scenarios and interactive QA exercises myself to demonstrate my practical testing approach across functional testing, API testing, database validation, banking workflows and core-banking concepts. This portfolio represents my ability to understand a workflow, design test scenarios, execute validations, identify defects and verify results.</p>
+</div>
+</div></div></section>
+
+<section><div class="container"><div class="eyebrow">CURRENT ROLE</div><h2>Wipro Limited · Software Test Engineer</h2><div class="card">
+<p class="muted"><strong style="color:#fff">March 2023 – Present · Mumbai, Maharashtra</strong></p>
+<div class="grid3">
+<div><h3>Requirements & Test Design</h3><p class="muted">BRD, FRS, SRS and user-story analysis; Test Scenarios, Test Cases, Test Data and RTM preparation.</p></div>
+<div><h3>Execution & Validation</h3><p class="muted">Functional, regression, smoke, sanity, integration, system, exploratory, UAT, database, API and end-to-end testing across positive, negative, boundary and exception scenarios.</p></div>
+<div><h3>Defect & Release</h3><p class="muted">JIRA/HP ALM defect lifecycle, severity/priority, reproduction, retesting, regression, defect triage, UAT and release validation.</p></div>
+</div></div></div></section><section><div class="container"><div class="eyebrow">PROJECTS</div><h2>Selected project experience</h2><div class="grid3">
+<div class="card project"><div><div class="num">01 / CORE BANKING</div><h3>Core Banking – FLEXCUBE Retail Banking</h3><p class="muted">Client: Citibank, India</p><p>Oracle FLEXCUBE testing across CASA, Current and Savings Account workflows, customer/account validation, Term Deposits, fund transfers, EOD processing, settlement, reconciliation and backend consistency.</p></div><div><span class="tag">FLEXCUBE</span><span class="tag">JIRA</span><span class="tag">Postman</span><span class="tag">SQL</span><span class="tag">Oracle</span></div></div>
+<div class="card project"><div><div class="num">02 / CAPITAL MARKETS</div><h3>Capital Markets & Acquisition</h3><p class="muted">Investment Banking · Client: Barclays, UK</p><p>Functional, regression, integration, database and REST API testing across trade processing and financial transaction workflows, including business-rule and downstream-data validation.</p></div><div><span class="tag">JIRA</span><span class="tag">HP ALM</span><span class="tag">Postman</span><span class="tag">SQL</span><span class="tag">Oracle</span></div></div>
+<div class="card project"><div><div class="num">03 / INTERNET BANKING</div><h3>Internet Banking Application</h3><p class="muted">Client: Citibank, India</p><p>Testing of login, authentication, account management, fund transfers, beneficiaries, statements, transaction history and NEFT/RTGS/IMPS scenarios including failures, timeouts and reversals.</p></div><div><span class="tag">Banking</span><span class="tag">API</span><span class="tag">SQL</span><span class="tag">Oracle</span><span class="tag">JIRA</span></div></div>
+</div></div></section>
+
+<section><div class="container"><div class="eyebrow">TECHNICAL SKILLS</div><h2>Tools, testing & domain coverage</h2><div class="grid3">
+<div class="card"><h3>Testing</h3><p class="muted">Manual, Functional, Regression, Smoke, Sanity, Integration, System, UAT, Exploratory, Retesting, Database, API, Mobile, Payment, Transaction and End-to-End Testing.</p></div>
+<div class="card"><h3>API & Database</h3><p class="muted">Postman, Newman, REST APIs, JSON/XML, HTTP methods, authentication, status-code validation, SQL, Oracle, Microsoft SQL Server, backend and transaction-data validation.</p></div>
+<div class="card"><h3>Tools & Process</h3><p class="muted">JIRA, HP ALM, SDLC, STLC, RTM, Test Scenario/Test Case Design, Test Execution, Defect Life Cycle, Agile Scrum and Waterfall.</p></div>
+</div></div></section><section><div class="container"><div class="eyebrow">TESTING MODEL</div><h2>From requirement to evidence</h2><div class="flow"><span class="node">Requirement</span><span class="arrow">→</span><span class="node">Scenario</span><span class="arrow">→</span><span class="node">Test Case</span><span class="arrow">→</span><span class="node">UI / API</span><span class="arrow">→</span><span class="node">Database</span><span class="arrow">→</span><span class="node">Defect</span><span class="arrow">→</span><span class="node">Retest</span><span class="arrow">→</span><span class="node">Regression</span></div></div></section>
+
+<section id="flexcube"><div class="container">
+<div class="eyebrow">CORE BANKING</div>
+<h2>Flexcube QA Lab</h2>
+<p class="muted">Portfolio demonstration of FLEXCUBE-style QA workflows — enter test data, execute validations and inspect simulated results.</p>
+
+<div class="lab">
+<div class="labTop">
+<div><span class="lights"><span class="r"></span><span class="y"></span><span class="g"></span></span> CORE BANKING · FLEXCUBE QA</div>
+<span class="status info">INTERACTIVE TEST ENV</span>
+</div>
+
+<div class="labBody">
+<div class="sidebar">
+<button class="sideItem active" onclick="flexNav('casaView',this)">CASA</button>
+<button class="sideItem" onclick="flexNav('customerView',this)">Customer</button>
+<button class="sideItem" onclick="flexNav('accountsView',this)">Accounts</button>
+<button class="sideItem" onclick="flexNav('depositsView',this)">Deposits</button>
+<button class="sideItem" onclick="flexNav('transactionsView',this)">Transactions</button>
+<button class="sideItem" onclick="flexNav('eodView',this)">EOD / BOD</button>
+<button class="sideItem" onclick="flexNav('reportsView',this)">Reports</button>
+</div>
+
+<div class="work">
+
+<!-- CASA -->
+<div id="casaView" class="flexView">
+<div class="crumb">Core Banking / CASA / Account Opening</div>
+<h3>Account Opening</h3>
+<div class="form">
+<div class="field"><small>CUSTOMER ID</small><input id="cif" value="CIF00018452"></div>
+<div class="field"><small>CUSTOMER NAME</small><input id="customerName" value="Test Customer"></div>
+<div class="field"><small>PRODUCT</small><select id="product"><option>Savings Account</option><option>Current Account</option></select></div>
+<div class="field"><small>BRANCH</small><input id="branch" value="Mumbai Central - 014"></div>
+<div class="field"><small>CURRENCY</small><select id="currency"><option>INR</option><option>USD</option><option>EUR</option></select></div>
+<div class="field"><small>INITIAL FUNDING</small><input id="funding" type="number" min="0" value="10000"></div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0">
+<button class="btn" type="button" onclick="openCasa()">Open Account</button>
+<button class="btn secondary" type="button" onclick="validateCasa()">Validate Test Data</button>
+<button class="btn secondary" type="button" onclick="resetCasa()">Reset</button>
+</div>
+<div id="casaResult" class="code">READY
+Enter test data and click "Open Account".</div>
+</div>
+
+<!-- CUSTOMER -->
+<div id="customerView" class="flexView" style="display:none">
+<div class="crumb">Core Banking / Customer Maintenance</div>
+<h3>Customer Maintenance</h3>
+<div class="form">
+<div class="field"><small>CUSTOMER ID</small><input id="custId" value="CIF00018452"></div>
+<div class="field"><small>FULL NAME</small><input id="custName" value="Test Customer"></div>
+<div class="field"><small>MOBILE</small><input id="custMobile" placeholder="10 digit mobile"></div>
+<div class="field"><small>EMAIL</small><input id="custEmail" type="email" placeholder="customer@example.com"></div>
+<div class="field"><small>KYC STATUS</small><select id="kyc"><option>Verified</option><option>Pending</option><option>Rejected</option></select></div>
+<div class="field"><small>RISK CATEGORY</small><select id="risk"><option>Standard</option><option>Medium</option><option>High</option></select></div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0">
+<button class="btn" type="button" onclick="createCustomer()">Create / Update Customer</button>
+<button class="btn secondary" type="button" onclick="validateCustomer()">Run Validation</button>
+</div>
+<div id="customerResult" class="code">READY
+Enter customer data and run validation.</div>
+</div>
+
+<!-- ACCOUNTS -->
+<div id="accountsView" class="flexView" style="display:none">
+<div class="crumb">Core Banking / Accounts</div>
+<h3>Account Inquiry</h3>
+<div class="form">
+<div class="field"><small>ACCOUNT NUMBER</small><input id="accountSearch" placeholder="Enter account number"></div>
+<div class="field"><small>SEARCH TYPE</small><select id="accountSearchType"><option>Account Number</option><option>Customer ID</option></select></div>
+</div>
+<button class="btn" type="button" onclick="searchAccount()">Search Account</button>
+<div id="accountResult" style="margin-top:14px"></div>
+</div>
+
+<!-- DEPOSITS -->
+<div id="depositsView" class="flexView" style="display:none">
+<div class="crumb">Core Banking / Deposits</div>
+<h3>Fixed / Term Deposit</h3>
+<div class="form">
+<div class="field"><small>CUSTOMER ID</small><input id="fdCustomer" value="CIF00018452"></div>
+<div class="field"><small>PRINCIPAL</small><input id="fdPrincipal" type="number" min="0" value="100000"></div>
+<div class="field"><small>TENURE</small><input id="fdTenure" type="number" min="1" value="12"></div>
+<div class="field"><small>TENURE UNIT</small><select id="fdUnit"><option>Months</option><option>Years</option></select></div>
+<div class="field"><small>INTEREST RATE %</small><input id="fdRate" type="number" min="0" step="0.01" value="7"></div>
+<div class="field"><small>MATURITY INSTRUCTION</small><select id="maturity"><option>Credit to Savings Account</option><option>Renew Principal + Interest</option><option>Renew Principal Only</option></select></div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0">
+<button class="btn" type="button" onclick="createFD()">Create Deposit</button>
+<button class="btn secondary" type="button" onclick="calculateFD()">Calculate Interest</button>
+</div>
+<div id="fdResult" class="code">READY
+Enter principal, tenure and interest rate.</div>
+</div>
+
+<!-- TRANSACTIONS -->
+<div id="transactionsView" class="flexView" style="display:none">
+<div class="crumb">Core Banking / Transactions</div>
+<h3>Transaction Simulator</h3>
+<div class="form">
+<div class="field"><small>FROM ACCOUNT</small><input id="fromAcc" placeholder="Enter source account"></div>
+<div class="field"><small>TO ACCOUNT</small><input id="toAcc" placeholder="Enter beneficiary account"></div>
+<div class="field"><small>AMOUNT</small><input id="txnAmount" type="number" min="0" value="5000"></div>
+<div class="field"><small>CHANNEL</small><select id="channel"><option>Branch</option><option>Internet Banking</option><option>Mobile Banking</option><option>API</option><option>UPI</option></select></div>
+<div class="field"><small>REFERENCE</small><input id="txnRef" value="TEST-TXN-001"></div>
+<div class="field"><small>SCENARIO</small><select id="txnScenario"><option>Success</option><option>Insufficient Balance</option><option>Invalid Beneficiary</option><option>Duplicate Transaction</option><option>Timeout</option></select></div>
+</div>
+<button class="btn" type="button" onclick="processTransaction()">Process Transaction</button>
+<div id="txnResult" class="code">READY
+Choose a scenario and process the transaction.</div>
+</div>
+
+<!-- EOD/BOD -->
+<div id="eodView" class="flexView" style="display:none">
+<div class="crumb">Core Banking / Batch Operations</div>
+<h3>EOD / BOD Control</h3>
+<div class="form">
+<div class="field"><small>BUSINESS DATE</small><input id="businessDate" type="date"></div>
+<div class="field"><small>BATCH MODE</small><select id="batchMode"><option>Normal EOD</option><option>Retry Failed Batch</option><option>Simulation</option></select></div>
+<div class="field"><small>PENDING TRANSACTIONS</small><input id="pendingTxns" type="number" min="0" value="0"></div>
+<div class="field"><small>EXCEPTION COUNT</small><input id="exceptions" type="number" min="0" value="0"></div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0">
+<button class="btn" type="button" onclick="runEOD()">Run EOD Checks</button>
+<button class="btn secondary" type="button" onclick="runBOD()">Run BOD Checks</button>
+</div>
+<div id="eodResult" class="code">READY
+Run EOD or BOD checks using your entered values.</div>
+</div>
+
+<!-- REPORTS -->
+<div id="reportsView" class="flexView" style="display:none">
+<div class="crumb">Core Banking / Reports</div>
+<h3>QA Reconciliation</h3>
+<div class="form">
+<div class="field"><small>EXPECTED RECORDS</small><input id="expectedRecords" type="number" min="0" value="100"></div>
+<div class="field"><small>ACTUAL RECORDS</small><input id="actualRecords" type="number" min="0" value="100"></div>
+<div class="field"><small>EXPECTED BALANCE</small><input id="expectedBalance" type="number" min="0" value="100000"></div>
+<div class="field"><small>ACTUAL BALANCE</small><input id="actualBalance" type="number" min="0" value="100000"></div>
+</div>
+<button class="btn" type="button" onclick="reconcile()">Run Reconciliation</button>
+<div id="reportResult" class="code">READY
+Enter expected and actual values.</div>
+</div>
+
+</div></div></div>
+
+<div class="card" style="margin-top:16px">
+<div class="tabs">
+<button class="tab active" onclick="flexTab('casaCases',this)">CASA Test Cases</button>
+<button class="tab" onclick="flexTab('fdCases',this)">FD / TD Test Cases</button>
+<button class="tab" onclick="flexTab('eodCases',this)">EOD / BOD Test Cases</button>
+</div>
+<div id="casaCases" class="pane active"><table><tr><th>ID</th><th>Scenario</th><th>Expected Result</th><th>Status</th></tr>
+<tr><td>FC-CASA-001</td><td>Valid account opening</td><td>Account created with correct product, status and account number.</td><td class="pass">PASS</td></tr>
+<tr><td>FC-CASA-002</td><td>Missing mandatory field</td><td>Validation displayed; account not created.</td><td class="pass">PASS</td></tr>
+<tr><td>FC-CASA-003</td><td>Invalid product/currency</td><td>Business validation prevents account creation.</td><td class="pass">PASS</td></tr>
+<tr><td>FC-CASA-004</td><td>Initial funding</td><td>Posting and opening balance are correct.</td><td class="pass">PASS</td></tr></table></div>
+<div id="fdCases" class="pane"><table><tr><th>ID</th><th>Scenario</th><th>Expected Result</th><th>Status</th></tr>
+<tr><td>FC-FD-001</td><td>Create FD</td><td>Deposit created with correct rate and maturity date.</td><td class="pass">PASS</td></tr>
+<tr><td>FC-FD-002</td><td>Interest calculation</td><td>Interest follows configured product/rate rules.</td><td class="pass">PASS</td></tr>
+<tr><td>FC-FD-003</td><td>Premature closure</td><td>Correct penalty/interest adjustment applied.</td><td class="pass">PASS</td></tr></table></div>
+<div id="eodCases" class="pane"><table><tr><th>Cycle</th><th>Validation</th><th>Status</th></tr>
+<tr><td>Pre-EOD</td><td>Pending transactions, business date and eligible records.</td><td class="pass">PASS</td></tr>
+<tr><td>EOD</td><td>Batch completion, postings, accrual and maturity processing.</td><td class="pass">PASS</td></tr>
+<tr><td>Post-EOD</td><td>Balances, transactions and reports.</td><td class="pass">PASS</td></tr>
+<tr><td>BOD</td><td>New business date, opening balances and transaction availability.</td><td class="pass">PASS</td></tr></table></div>
+</div>
+</div></div></section>
+<section id="lab"><div class="container"><div class="eyebrow">INTERACTIVE QA</div><h2>Testing Lab</h2><div class="card"><div class="tabs"><button class="tab active" onclick="qaTab('api',this)">Postman</button><button class="tab" onclick="qaTab('upi',this)">UPI</button><button class="tab" onclick="qaTab('sql',this)">SQL</button><button class="tab" onclick="qaTab('defect',this)">Defect</button></div>
+<div id="api" class="pane active"><div class="code">POST /api/v1/transfer
+Authorization: Bearer &lt;token&gt;
+Content-Type: application/json
+
+{
+  "fromAccount": "XXXXXX",
+  "beneficiary": "YYYYYY",
+  "amount": 5000
+}
+
+HTTP 200 OK
+{
+  "transactionId": "TXN001",
+  "status": "SUCCESS"
+}
+
+Validation: endpoint · method · authentication · mandatory fields
+· JSON · status code · business response · transaction ID</div></div>
+<div id="upi" class="pane"><table><tr><th>Workflow</th><th>Coverage</th></tr><tr><td>Registration</td><td>UPI registration, bank-account linking and UPI ID creation.</td></tr><tr><td>Payment</td><td>P2P, P2M and QR — success, failed, declined, pending, timeout and reversal.</td></tr><tr><td>Collect</td><td>Creation, acceptance, rejection and expiry.</td></tr><tr><td>Negative</td><td>Incorrect UPI ID/PIN, duplicate payment and insufficient balance.</td></tr></table></div>
+<div id="sql" class="pane"><div class="code">SELECT account_no, balance
+FROM account
+WHERE account_no = 'XXXXXX';
+
+SELECT transaction_id, amount, status
+FROM transactions
+WHERE transaction_id = 'TXN001';
+
+UI → API → DATABASE
+Validate that transaction state and financial values remain consistent.</div></div>
+<div id="defect" class="pane"><table><tr><th>Field</th><th>Example</th></tr><tr><td>Title</td><td>UPI payment remains Pending after successful debit</td></tr><tr><td>Severity / Priority</td><td class="high">High / High</td></tr><tr><td>Actual</td><td>Balance debited while payment remains Pending.</td></tr><tr><td>Expected</td><td>Final transaction state consistent across UI, API and backend.</td></tr><tr><td>Retest</td><td>Verify fix and execute regression for related flows.</td></tr></table></div>
+</div></div></section>
+
+<section><div class="container"><div class="eyebrow">DEFECT MANAGEMENT</div><h2>Controlled lifecycle</h2><div class="timeline"><div class="stage">NEW<small>Logged</small></div><div class="stage">ASSIGNED<small>Owner</small></div><div class="stage">IN PROGRESS<small>Analysis</small></div><div class="stage">FIXED<small>Developer</small></div><div class="stage">RETEST<small>Verify</small></div><div class="stage">REGRESSION<small>Impact</small></div><div class="stage">CLOSED<small>Validated</small></div></div></div></section>
+
+<section><div class="container"><div class="eyebrow">EDUCATION</div><h2>Academic background</h2><div class="card"><h3>Shivaji University, Kolhapur, Maharashtra</h3><p class="muted">Completed Graduation in Computer Science · 2019 – 2023</p><span class="tag">Computer Science</span><span class="tag">2019–2023</span></div></div></section>
+
+<section><div class="container"><div class="eyebrow">LANGUAGES</div><h2>Communication</h2><div class="card"><span class="tag">English</span><span class="tag">Hindi</span><span class="tag">Marathi</span></div></div></section>
+<section id="contact"><div class="container"><div class="eyebrow">CONTACT</div><h2>Let's talk quality.</h2><div class="card"><h3>Jagtap Sangharsh Sampatrao</h3><p class="muted">Software Test Engineer · Wipro Limited · Immediate Joiner</p><p><a class="btn" href="mailto:jagtapsangharsh007@gmail.com">Email</a><a class="btn secondary" href="tel:+917058337238">+91 7058337238</a></p><p class="muted">Airoli, Navi-Mumbai, Maharashtra · Mumbai · Navi Mumbai · Thane · Pune</p></div></div></section>
+<footer><div class="container">© 2026 Sangharsh Jagtap · Software Test Engineer · QA Portfolio</div></footer>
+
+<script>
+function flexNav(id,b){
+ document.querySelectorAll('#flexcube .flexView').forEach(x=>x.style.display='none');
+ const el=document.getElementById(id); if(el) el.style.display='block';
+ document.querySelectorAll('#flexcube .sideItem').forEach(x=>x.classList.remove('active'));
+ b.classList.add('active');
+}
+function flexTab(id,b){
+ document.querySelectorAll('#flexcube .pane').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('#flexcube .tab').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');b.classList.add('active')
+}
+function flexMsg(id,title,lines,ok=true){
+ const box=document.getElementById(id);
+ box.innerHTML=title+'\n'+lines.join('\n');
+ box.style.borderColor=ok?'#1c6b50':'#70404a';
+}
+function validateCasa(){
+ const cif=document.getElementById('cif').value.trim(), name=document.getElementById('customerName').value.trim();
+ const branch=document.getElementById('branch').value.trim(), amount=Number(document.getElementById('funding').value);
+ const issues=[];
+ if(!cif) issues.push('✗ Customer ID is mandatory');
+ if(!name) issues.push('✗ Customer name is mandatory');
+ if(!branch) issues.push('✗ Branch is mandatory');
+ if(!amount || amount<0) issues.push('✗ Initial funding must be zero or greater');
+ if(issues.length){flexMsg('casaResult','VALIDATION FAILED',issues,false)}
+ else flexMsg('casaResult','VALIDATION PASSED',['✓ Mandatory fields present','✓ Product selected','✓ Branch supplied','✓ Currency supplied','✓ Funding amount valid'],true);
+}
+function openCasa(){
+ validateCasa();
+ const cif=document.getElementById('cif').value.trim(), name=document.getElementById('customerName').value.trim(), amount=Number(document.getElementById('funding').value);
+ if(!cif||!name||!document.getElementById('branch').value.trim()||amount<0)return;
+ const account='10'+Math.floor(10000000+Math.random()*89999999);
+ flexMsg('casaResult','ACCOUNT OPENING SUCCESS',['✓ Customer: '+name+' ('+cif+')','✓ Account No.: '+account,'✓ Product: '+document.getElementById('product').value,'✓ Currency: '+document.getElementById('currency').value,'✓ Opening Balance: '+amount.toLocaleString('en-IN'),'✓ Status: AUTHORIZED'],true);
+}
+function resetCasa(){
+ ['cif','customerName','branch','funding'].forEach(id=>document.getElementById(id).value={cif:'CIF00018452',customerName:'Test Customer',branch:'Mumbai Central - 014',funding:10000}[id]);
+ document.getElementById('product').selectedIndex=0;document.getElementById('currency').selectedIndex=0;
+ document.getElementById('casaResult').textContent='READY\nEnter test data and click "Open Account".';
+}
+function validateCustomer(){
+ const id=document.getElementById('custId').value.trim(),name=document.getElementById('custName').value.trim(),mobile=document.getElementById('custMobile').value.trim(),email=document.getElementById('custEmail').value.trim();
+ const issues=[]; if(!id)issues.push('✗ Customer ID is mandatory');if(!name)issues.push('✗ Full name is mandatory');if(mobile && !/^[0-9]{10}$/.test(mobile))issues.push('✗ Mobile must contain 10 digits');if(email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))issues.push('✗ Email format is invalid');
+ if(document.getElementById('kyc').value==='Rejected')issues.push('✗ KYC rejected');
+ if(issues.length)flexMsg('customerResult','CUSTOMER VALIDATION FAILED',issues,false);
+ else flexMsg('customerResult','CUSTOMER VALIDATION PASSED',['✓ Customer data valid','✓ KYC: '+document.getElementById('kyc').value,'✓ Risk: '+document.getElementById('risk').value,'✓ Ready for account servicing'],true);
+}
+function createCustomer(){validateCustomer();setTimeout(()=>{const b=document.getElementById('custId').value.trim();if(b)document.getElementById('customerResult').textContent+='\\n✓ Customer record saved successfully (simulation).'},50)}
+function calculateFD(){
+ const p=Number(document.getElementById('fdPrincipal').value),rate=Number(document.getElementById('fdRate').value),tenure=Number(document.getElementById('fdTenure').value),unit=document.getElementById('fdUnit').value;
+ const years=unit==='Years'?tenure:tenure/12,interest=p*rate*years/100,maturity=p+interest;
+ flexMsg('fdResult','DEPOSIT CALCULATION',['Principal: ₹ '+p.toLocaleString('en-IN'),'Rate: '+rate+'%','Tenure: '+tenure+' '+unit,'Simple-interest illustration: ₹ '+interest.toLocaleString('en-IN',{maximumFractionDigits:2}),'Illustrated maturity: ₹ '+maturity.toLocaleString('en-IN',{maximumFractionDigits:2})],true);
+}
+function createFD(){calculateFD();setTimeout(()=>document.getElementById('fdResult').textContent+='\\n✓ Deposit creation validation completed (simulation).',50)}
+function processTransaction(){
+ const from=document.getElementById('fromAcc').value.trim(),to=document.getElementById('toAcc').value.trim(),amt=Number(document.getElementById('txnAmount').value),scenario=document.getElementById('txnScenario').value;
+ if(!from||!to||!amt||amt<=0){flexMsg('txnResult','VALIDATION FAILED',['✗ Source account, beneficiary and positive amount are required'],false);return}
+ if(scenario==='Success')flexMsg('txnResult','TRANSACTION SUCCESS',['✓ Reference: '+document.getElementById('txnRef').value,'✓ Channel: '+document.getElementById('channel').value,'✓ Amount: ₹ '+amt.toLocaleString('en-IN'),'✓ Debit/Credit posting validated','✓ Transaction status: SUCCESS'],true);
+ else flexMsg('txnResult','TRANSACTION REJECTED',[ 'Scenario: '+scenario, scenario==='Timeout'?'✓ Timeout handling should prevent duplicate posting':'✓ Business validation prevented completion','✓ No unintended final posting'],false);
+}
+function runEOD(){
+ const pending=Number(document.getElementById('pendingTxns').value),exceptions=Number(document.getElementById('exceptions').value);
+ if(pending||exceptions)flexMsg('eodResult','EOD REVIEW REQUIRED',['Pending transactions: '+pending,'Exceptions: '+exceptions,'⚠ Resolve/reconcile exceptions before final EOD closure'],false);
+ else flexMsg('eodResult','EOD CHECKS PASSED',['✓ Business date valid','✓ No pending transactions','✓ No exceptions','✓ Batch prerequisites satisfied','✓ Ready for EOD execution'],true);
+}
+function runBOD(){
+ flexMsg('eodResult','BOD CHECKS PASSED',['✓ New business date: '+document.getElementById('businessDate').value,'✓ Opening balance checks','✓ Product availability','✓ Transaction availability','✓ Ready for normal operations'],true);
+}
+function searchAccount(){
+ const q=document.getElementById('accountSearch').value.trim();if(!q){document.getElementById('accountResult').innerHTML='<div class="code">Enter an account number or customer ID.</div>';return}
+ document.getElementById('accountResult').innerHTML='<table><tr><th>Account</th><th>Product</th><th>Currency</th><th>Balance</th><th>Status</th></tr><tr><td>'+q+'</td><td>Savings</td><td>INR</td><td>₹ 10,000.00</td><td class="pass">ACTIVE</td></tr></table>';
+}
+
+function qaTab(id,b){
+ document.querySelectorAll('#lab .pane').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('#lab .tab').forEach(x=>x.classList.remove('active'));
+ const pane=document.getElementById(id);
+ if(pane) pane.classList.add('active');
+ b.classList.add('active');
+}
+
+function reconcile(){
+ const er=Number(document.getElementById('expectedRecords').value),ar=Number(document.getElementById('actualRecords').value),eb=Number(document.getElementById('expectedBalance').value),ab=Number(document.getElementById('actualBalance').value);
+ const ok=er===ar&&eb===ab;flexMsg('reportResult',ok?'RECONCILIATION PASSED':'RECONCILIATION FAILED',['Expected records: '+er,'Actual records: '+ar,'Expected balance: ₹ '+eb.toLocaleString('en-IN'),'Actual balance: ₹ '+ab.toLocaleString('en-IN'),ok?'✓ Counts and balances match':'✗ Investigate count/balance mismatch'],ok);
+}
+document.getElementById('businessDate').value=new Date().toISOString().slice(0,10);
+</script>
+</body>
+</html>
